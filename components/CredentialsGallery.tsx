@@ -14,6 +14,7 @@ import {
   ZoomOut,
   Maximize2,
   ShieldCheck,
+  Download,
 } from 'lucide-react';
 
 interface CredentialDoc {
@@ -163,11 +164,11 @@ export default function CredentialsGallery() {
             </p>
           </div>
 
-          {/* Interactive Filter Tabs */}
-          <div className="flex items-center gap-1 p-1 bg-stone-200/70 rounded-md shrink-0 self-start md:self-end">
+          {/* Interactive Filter Tabs - Fully responsive and contained */}
+          <div className="flex flex-wrap items-center gap-1.5 p-1 bg-stone-200/70 rounded-lg max-w-full">
             <button
               onClick={() => setFilter('all')}
-              className={`px-3 py-1.5 text-xs font-medium rounded transition-colors cursor-pointer whitespace-nowrap ${
+              className={`px-3 py-1.5 text-xs font-medium rounded transition-colors cursor-pointer whitespace-nowrap shrink-0 ${
                 filter === 'all'
                   ? 'bg-white text-stone-900 shadow-sm'
                   : 'text-stone-600 hover:text-stone-900'
@@ -177,7 +178,7 @@ export default function CredentialsGallery() {
             </button>
             <button
               onClick={() => setFilter('degree')}
-              className={`px-3 py-1.5 text-xs font-medium rounded transition-colors cursor-pointer whitespace-nowrap ${
+              className={`px-3 py-1.5 text-xs font-medium rounded transition-colors cursor-pointer whitespace-nowrap shrink-0 ${
                 filter === 'degree'
                   ? 'bg-white text-stone-900 shadow-sm'
                   : 'text-stone-600 hover:text-stone-900'
@@ -187,7 +188,7 @@ export default function CredentialsGallery() {
             </button>
             <button
               onClick={() => setFilter('recommendation')}
-              className={`px-3 py-1.5 text-xs font-medium rounded transition-colors cursor-pointer whitespace-nowrap ${
+              className={`px-3 py-1.5 text-xs font-medium rounded transition-colors cursor-pointer whitespace-nowrap shrink-0 ${
                 filter === 'recommendation'
                   ? 'bg-white text-stone-900 shadow-sm'
                   : 'text-stone-600 hover:text-stone-900'
@@ -197,7 +198,7 @@ export default function CredentialsGallery() {
             </button>
             <button
               onClick={() => setFilter('court')}
-              className={`px-3 py-1.5 text-xs font-medium rounded transition-colors cursor-pointer whitespace-nowrap ${
+              className={`px-3 py-1.5 text-xs font-medium rounded transition-colors cursor-pointer whitespace-nowrap shrink-0 ${
                 filter === 'court'
                   ? 'bg-white text-stone-900 shadow-sm'
                   : 'text-stone-600 hover:text-stone-900'
@@ -205,6 +206,32 @@ export default function CredentialsGallery() {
             >
               Court Seal
             </button>
+          </div>
+        </div>
+
+        {/* Quick PDF Downloads Strip */}
+        <div className="mb-8 p-3.5 bg-white border border-stone-200 rounded-lg flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-2xs">
+          <div className="flex items-center gap-2 text-xs text-stone-700 font-medium">
+            <FileText className="w-4 h-4 text-stone-800 shrink-0" />
+            <span>Official Documents &amp; Institutional Compilation:</span>
+          </div>
+          <div className="flex flex-wrap items-center gap-2.5">
+            <a
+              href="/documents/Roman_Mekonnen_CV.pdf"
+              download="Roman_Mekonnen_CV.pdf"
+              className="px-3 py-1.5 bg-stone-100 hover:bg-stone-200 text-stone-800 rounded text-xs font-semibold inline-flex items-center gap-1.5 transition-colors"
+            >
+              <Download className="w-3.5 h-3.5 text-stone-700" />
+              <span>Download Resume (PDF)</span>
+            </a>
+            <a
+              href="/documents/Academic_Credentials_Roman_Mekonnen.pdf"
+              download="Academic_Credentials_Roman_Mekonnen.pdf"
+              className="px-3 py-1.5 bg-stone-900 hover:bg-stone-800 text-stone-50 rounded text-xs font-semibold inline-flex items-center gap-1.5 transition-colors"
+            >
+              <Download className="w-3.5 h-3.5 text-stone-300" />
+              <span>Download Academic Credentials (PDF)</span>
+            </a>
           </div>
         </div>
 
@@ -221,11 +248,11 @@ export default function CredentialsGallery() {
                 <div className="space-y-4">
                   {/* Category Header */}
                   <div className="flex items-center justify-between gap-2 border-b border-stone-100 pb-3">
-                    <div className="flex items-center gap-2 text-[11px] font-mono text-stone-500 uppercase tracking-wider">
+                    <div className="flex items-center gap-2 text-[11px] font-mono text-stone-500 uppercase tracking-wider truncate">
                       <Icon className="w-3.5 h-3.5 text-stone-800 shrink-0" />
-                      <span>{doc.categoryLabel}</span>
+                      <span className="truncate">{doc.categoryLabel}</span>
                     </div>
-                    <span className="text-[11px] font-mono text-stone-400">
+                    <span className="text-[11px] font-mono text-stone-400 shrink-0">
                       {doc.date}
                     </span>
                   </div>
@@ -247,20 +274,20 @@ export default function CredentialsGallery() {
 
                   {/* Reference Tag */}
                   {doc.reference && (
-                    <div className="text-[11px] font-mono text-stone-600 bg-[#faf9f6] border border-stone-200/80 p-2.5 rounded leading-relaxed">
+                    <div className="text-[11px] font-mono text-stone-600 bg-[#faf9f6] border border-stone-200/80 p-2.5 rounded leading-relaxed break-words">
                       {doc.reference}
                     </div>
                   )}
                 </div>
 
-                {/* Card Action Footer */}
-                <div className="pt-5 mt-5 border-t border-stone-100 flex items-center justify-between text-xs font-semibold">
-                  <span className="text-stone-900 group-hover:underline flex items-center gap-1.5">
-                    <Eye className="w-4 h-4 text-stone-700" />
-                    <span>View Official Credential</span>
+                {/* Card Action Footer - Clean and Contained with Zero Text Collision */}
+                <div className="pt-4 mt-5 border-t border-stone-100 flex items-center justify-between text-xs font-semibold text-stone-900">
+                  <span className="flex items-center gap-1.5 group-hover:underline truncate">
+                    <Eye className="w-3.5 h-3.5 text-stone-700 shrink-0" />
+                    <span className="truncate">View Credential</span>
                   </span>
-                  <span className="text-stone-400 text-xs font-mono group-hover:text-stone-900 transition-colors">
-                    Click to Open &rarr;
+                  <span className="text-[11px] font-mono text-stone-500 group-hover:text-stone-900 transition-colors shrink-0 ml-2">
+                    Open &rarr;
                   </span>
                 </div>
               </div>
@@ -313,6 +340,16 @@ export default function CredentialsGallery() {
                       </>
                     )}
                   </button>
+
+                  <a
+                    href="/documents/Academic_Credentials_Roman_Mekonnen.pdf"
+                    download="Academic_Credentials_Roman_Mekonnen.pdf"
+                    className="px-3 py-1.5 text-xs font-medium text-stone-700 bg-white border border-stone-200 hover:bg-stone-50 rounded flex items-center gap-1.5 cursor-pointer shadow-2xs"
+                    title="Download complete academic credentials compilation"
+                  >
+                    <Download className="w-3.5 h-3.5 text-stone-700" />
+                    <span className="hidden sm:inline">Download PDF</span>
+                  </a>
 
                   <button
                     onClick={() => setActiveDoc(null)}

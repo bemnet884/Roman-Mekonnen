@@ -12,6 +12,8 @@ import {
   Award,
   CheckCircle2,
   FileCheck2,
+  Download,
+  FileText,
 } from 'lucide-react';
 
 export default function Hero() {
@@ -58,28 +60,50 @@ export default function Hero() {
               </div>
             </div>
 
-            {/* Action Buttons */}
-            <div className="pt-8 flex flex-wrap items-center gap-3">
-              <a
-                href="#experience"
-                className="px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-stone-50 bg-stone-900 hover:bg-stone-800 rounded transition-colors inline-flex items-center gap-2 shadow-sm"
-              >
-                <span>View Court Record</span>
-                <ArrowUpRight className="w-3.5 h-3.5" />
-              </a>
-              <a
-                href="#credentials"
-                className="px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-stone-800 bg-stone-100 hover:bg-stone-200 border border-stone-200 rounded transition-colors inline-flex items-center gap-2"
-              >
-                <span>Examine Credentials</span>
-              </a>
-              <a
-                href="#contact"
-                className="px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-stone-600 hover:text-stone-900 transition-colors inline-flex items-center gap-1.5"
-              >
-                <Mail className="w-3.5 h-3.5" />
-                <span>Contact Directly</span>
-              </a>
+            {/* Action & Download Buttons */}
+            <div className="pt-8 space-y-3">
+              <div className="flex flex-wrap items-center gap-3">
+                <a
+                  href="#experience"
+                  className="px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-stone-50 bg-stone-900 hover:bg-stone-800 rounded transition-colors inline-flex items-center gap-2 shadow-sm"
+                >
+                  <span>View Court Record</span>
+                  <ArrowUpRight className="w-3.5 h-3.5" />
+                </a>
+                <a
+                  href="#credentials"
+                  className="px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-stone-800 bg-stone-100 hover:bg-stone-200 border border-stone-200 rounded transition-colors inline-flex items-center gap-2"
+                >
+                  <span>Examine Credentials</span>
+                </a>
+                <a
+                  href="#contact"
+                  className="px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-stone-600 hover:text-stone-900 transition-colors inline-flex items-center gap-1.5"
+                >
+                  <Mail className="w-3.5 h-3.5" />
+                  <span>Contact Directly</span>
+                </a>
+              </div>
+
+              {/* Direct PDF Downloads */}
+              <div className="pt-1 flex flex-wrap items-center gap-2.5">
+                <a
+                  href="/documents/Roman_Mekonnen_CV.pdf"
+                  download="Roman_Mekonnen_CV.pdf"
+                  className="px-3.5 py-2 text-xs font-semibold uppercase tracking-wider text-stone-800 bg-white hover:bg-stone-50 border border-stone-300 rounded transition-colors inline-flex items-center gap-2 shadow-2xs"
+                >
+                  <FileText className="w-3.5 h-3.5 text-stone-700" />
+                  <span>Download Resume (PDF)</span>
+                </a>
+                <a
+                  href="/documents/Academic_Credentials_Roman_Mekonnen.pdf"
+                  download="Academic_Credentials_Roman_Mekonnen.pdf"
+                  className="px-3.5 py-2 text-xs font-semibold uppercase tracking-wider text-stone-800 bg-white hover:bg-stone-50 border border-stone-300 rounded transition-colors inline-flex items-center gap-2 shadow-2xs"
+                >
+                  <Award className="w-3.5 h-3.5 text-stone-700" />
+                  <span>Download Academic Credentials (PDF)</span>
+                </a>
+              </div>
             </div>
           </div>
 

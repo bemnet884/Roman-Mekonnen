@@ -70,9 +70,6 @@ export default function ResearchSection() {
                 <ArrowRight className="w-3.5 h-3.5" />
               </button>
 
-              <span className="text-xs text-stone-400 font-mono">
-                Full thesis documented in portfolio
-              </span>
             </div>
           </div>
 
